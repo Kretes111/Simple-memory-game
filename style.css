@@ -17,13 +17,29 @@ body {
 	left: 42%;
 	top: 35vh;
 	width: 16%;
-	height: 5%;
+	height: 8%;
 	background-color: #aad929;
 	text-align: center;
-	font-size: 3vh;
+	font-size: 2rem;
 	border: 4px solid rgb(156, 173, 147);
 	border-radius: 10px;
 	cursor: pointer;
+}
+
+@media screen and (max-width: 500px) and (orientation: portrait) {
+	#start {
+		width: 50%;
+		min-height: 10%;
+		left: 25%;
+	}
+}
+
+@media screen and (max-height: 415px) and (orientation: landscape) {
+	#start {
+		width: 30%;
+		height: 20%;
+		left: 35%;
+	}
 }
 
 div{
