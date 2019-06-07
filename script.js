@@ -21,15 +21,7 @@ let arr = [];
 let activeCard = "";
 const guessedCards = [];
 
-
-		//ukrywanie kart po losowaniu
-function hideCards() {
-	cards.forEach(card => {
-		card.classList.add("hidden");
-	})
-}
-		
-		//losowanie kart
+		//drawing cards
 function assignImages() {
 	button.style.display = "none";
 	cards.forEach(card => {
@@ -42,8 +34,30 @@ function assignImages() {
 	
 	setTimeout(hideCards, 3000);
 }
+
+		//hiding cards after drawing
+function hideCards() {
+	cards.forEach(card => {
+		card.classList.add("hidden");
+	})
+}
 		
-		//zakrycie nieodgatniętych / zatwierdzenie odgadniętych
+		//show selected cards => next hide
+function showCard(){
+	if (!this.classList.contains("hidden")){
+		return;
+	}
+	if (arr.length < 2) {
+		activeCard = this.id;
+		arr.push(activeCard);
+		this.classList.remove("hidden");
+	}
+	if (arr.length === 2) {
+		setTimeout(getHide, 600);
+	}
+}
+		
+		//hide not guessed cards/ confirm guessed cards
 function getHide() {
 	const card1 = document.getElementById(arr[0]);
 	const card2 = document.getElementById(arr[1]);
@@ -69,20 +83,6 @@ function getHide() {
 	}
 }
 
-		//odkrycie klikniętej karty => następnie zakrycie
-function showCard(){
-	if (!this.classList.contains("hidden")){
-		return;
-	}
-	if (arr.length < 2) {
-		activeCard = this.id;
-		arr.push(activeCard);
-		this.classList.remove("hidden");
-	}
-	if (arr.length === 2) {
-		setTimeout(getHide, 500);
-	}
-}
 
 cards.forEach(e => e.addEventListener("click", showCard));
 
